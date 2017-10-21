@@ -23,4 +23,9 @@ $("#submit").click(function(){
 	var item = $("#item").val("")
 	var cost = $("#cost").val("")
 	alert("儲存成功")
+	swal(
+	  'Good job!',
+	  'You clicked the button!',
+	  'success'
+	)
 })
