@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+  <script type="text/javascript" src="js/fdb-all.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
+  <script src="http://www.flotcharts.org/flot/jquery.flot.pie.js"></script>
+  <title></title>
+</head>
+
+<body>
+  <h1>支出查詢</h1>
+
+  <input type="radio" name="method" value="curMonth"> 本月份<br>
+  <input type="radio" name="method" value="time"> 指定期間<br>
+  <input type="date" id="fromTime"> - <input type="date" id="toTime"><br>
+  <button class="btn btn-primary little" id="lookup" onclick="Search()">查詢</button>
+
+  <div id="legendPlaceholder"></div>
+  <div id="flotcontainer"></div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>類別</th>
+        <th>金額</th>
+        <th>比例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>吃的</td>
+        <td id="eatCost">0</td>
+        <td id="eatProportion">0%</td>
+      </tr>
+      <tr>
+        <td>玩的</td>
+        <td id="playCost">0</td>
+        <td id="playProportion">0%</td>
+      </tr>
+      <tr>
+        <td>其他</td>
+        <td id="otherCost">0</td>
+        <td id="otherProportion">0%</td>
+      </tr>
+      <tr>
+        <td>總計</td>
+        <td id="totalCost">0</td>
+        <td>100%</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>項目</th>
+        <th>類別</th>
+        <th>金額</th>
+      </tr>
+    </thead>
+    <tbody id="accountingTable">
+
+    </tbody>
+  </table>
+  <script type="text/javascript" src="js/look.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      var data = [
+        { label: "影像合成", data: 10 },
+        { label: "商品拍攝", data: 20 },
+        { label: "打光技巧", data: 30 },
+        { label: "實拍案例", data: 40 }
+      ];
+
+      var options = {
+        series: {
+          pie: { show: true }
+        },
+        legend: {
+          show: false
+        }
+      };
+      $.plot($("#flotcontainer"), data, options);
+    });
+  </script>
+</body>
+
+</html>
