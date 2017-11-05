@@ -1,31 +1,25 @@
 var fdb = new ForerunnerDB();
 var db = fdb.db("accounting");
 var accountingCollection = db.collection('accounting');
+
 accountingCollection.load();
 
-$("#submit").click(function(){
-	var date = $("#date").val()
-	var category = $("#category").val()
-	var item = $("#item").val()
-	var cost = $("#cost").val()
-	
+function submit() {
 	var newAccounting = {
-		date: date,
-		category: category,
-		item: item,
-		cost: cost
+		date: $("#date").val(),
+		category: $("#category").val(),
+		item: $("#item").val(),
+		cost: $("#cost").val()
 	}
-	accountingCollection.insert(newAccounting);
-	accountingCollection.save()
 
-	var date = $("#date").val("")
-	var category = $("#category").val("")
-	var item = $("#item").val("")
-	var cost = $("#cost").val("")
-	alert("儲存成功")
-	swal(
-	  'Good job!',
-	  'You clicked the button!',
-	  'success'
-	)
-})
+	accountingCollection.insert(newAccounting);
+	accountingCollection.save();
+
+	$("#date").val("");
+	$("#category").val("");
+	$("#item").val("");
+	$("#cost").val("");
+	alert("儲存成功");
+
+}
+
