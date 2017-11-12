@@ -7,9 +7,9 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
   <script type="text/javascript" src="js/fdb-all.min.js"></script>
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
-  <script src="http://www.flotcharts.org/flot/jquery.flot.pie.js"></script> -->
+  <script src="http://www.flotcharts.org/flot/jquery.flot.pie.js"></script>
   <title></title>
 </head>
 
@@ -21,8 +21,8 @@
   <input type="date" id="fromTime"> - <input type="date" id="toTime"><br>
   <button class="btn btn-primary little" id="lookup" onclick="Search()">查詢</button>
 
-  <!-- <div id="legendPlaceholder"></div>
-  <div id="flotcontainer"></div> -->
+  <div id="legendPlaceholder"></div>
+  <div id="flotcontainer"></div>
 
   <table class="table table-striped">
     <thead>
@@ -62,6 +62,7 @@
         <th>項目</th>
         <th>類別</th>
         <th>金額</th>
+        <th>刪除</th>
       </tr>
     </thead>
     <tbody id="accountingTable">
@@ -69,7 +70,7 @@
     </tbody>
   </table>
   <script type="text/javascript" src="js/look.js"></script>
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     $(function () {
       var data = [
         { label: "影像合成", data: 10 },
@@ -88,7 +89,7 @@
       };
       $.plot($("#flotcontainer"), data, options);
     });
-  </script> -->
+  </script>
 </body>
 
 </html>
