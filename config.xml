@@ -1,23 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<widget xmlns   = "http://www.w3.org/ns/widgets"
-    xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.phonegap.example"
-    versionCode = "10"
-    version     = "1.0.0" >
-
-<!-- versionCode is optional and Android only -->
-
-  <name>Lily の 日常</name>
-
-  <description>
-      我的第一支記帳 APP
-  </description>
-
-  <author href="https://a.b.c" email="w@a.c">
-      John Walker
-  </author>
-  <access origin="*" />
-
-  <icon src="icon.png" />
-
-</widget>
+<widget id="com.example.hello" version="0.0.1">
+        <name>Lily の 日常</name>
+        <description>
+            我的第一支記帳 APP
+        </description>
+        <author email="dev@callback.apache.org" href="http://cordova.io">
+            Apache Cordova Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+    </widget>
