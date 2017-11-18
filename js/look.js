@@ -26,10 +26,10 @@ function Search() {
             }
         );
 
-        var eatCost =0;
-        var playCost =0;
-        var otherCost =0;
-        var totalCost =0;
+        var eatCost = 0;
+        var playCost = 0;
+        var otherCost = 0;
+        var totalCost = 0;
         for (var i = 0; i < accountings.length; i++) {
             var date = accountings[i].date;
             var category = accountings[i].category;
@@ -42,95 +42,113 @@ function Search() {
                 "</td><td>" + category +
                 "</td><td>" + item +
                 "</td><td>" + cost +
-                "</td><td>" + "<button class=\"btn btn-danger little\" onclick=\"remove(\'"+ id +"\')\">刪除</button>" + 
+                "</td><td>" + "<button class=\"btn btn-danger little\" onclick=\"remove(\'" + id + "\')\">刪除</button>" +
                 "</td></tr>");
 
-            if(category == "吃的") {
+            if (category == "吃的") {
                 eatCost += cost / 1;
                 console.log(eatCost);
-            }else if(category == "玩的") {
+            } else if (category == "玩的") {
                 playCost += cost / 1;
-            }else{
+            } else {
                 otherCost += cost / 1;
             }
         }
         totalCost = eatCost + playCost + otherCost;
 
-		$("#eatCost").text(eatCost)
-		$("#eatProportion").text(Math.round((eatCost/totalCost)*100) + "%")
-		$("#playCost").text(playCost)
-		$("#playProportion").text(Math.round((playCost/totalCost)*100) + "%")
-		$("#otherCost").text(otherCost)
-		$("#otherProportion").text(Math.round((otherCost/totalCost)*100) + "%")
+        $("#eatCost").text(eatCost)
+        $("#eatProportion").text(Math.round((eatCost / totalCost) * 100) + "%")
+        $("#playCost").text(playCost)
+        $("#playProportion").text(Math.round((playCost / totalCost) * 100) + "%")
+        $("#otherCost").text(otherCost)
+        $("#otherProportion").text(Math.round((otherCost / totalCost) * 100) + "%")
         $("#totalCost").text(totalCost)
 
         var data = [
-            { label: "吃的", data: eatCost},
+            { label: "吃的", data: eatCost },
             { label: "玩的", data: playCost },
             { label: "其他", data: otherCost }
-          ];
-    
-          var options = {
+        ];
+
+        var options = {
             series: {
-              pie: { show: true }
+                pie: { show: true }
             },
             legend: {
-              show: false
+                show: false
             }
-          };
-          $.plot($("#flotcontainer"), data, options);
-        
+        };
+        $("#flotcontainer").css('display','block'); 
+        $.plot($("#flotcontainer"), data, options);
+
     } else {
         var fromTime = $("#fromTime").val();
-		var toTime = $("#toTime").val();
-		var accountings = accountingCollection.find(
-			{
-				date: {
-					$gte: fromTime,
-					$lte: toTime
-				}
-			},
+        var toTime = $("#toTime").val();
+        var accountings = accountingCollection.find(
+            {
+                date: {
+                    $gte: fromTime,
+                    $lte: toTime
+                }
+            },
             {
                 $orderBy: { "date": -1 }
             }
-		);
-		var eatCost =0;
-        var playCost =0;
-        var otherCost =0;
-        var totalCost =0;
+        );
+        var eatCost = 0;
+        var playCost = 0;
+        var otherCost = 0;
+        var totalCost = 0;
         for (var i = 0; i < accountings.length; i++) {
             var date = accountings[i].date;
             var category = accountings[i].category;
             var item = accountings[i].item;
             var cost = accountings[i].cost;
             var id = accountings[i]._id;
-            
+
             $("#accountingTable").append(
                 "<tr><td>" + date +
                 "</td><td>" + category +
                 "</td><td>" + item +
                 "</td><td>" + cost +
-                "</td><td>" + "<button class=\"btn btn-danger little\" onclick=\"remove(\'"+ id +"\')\">刪除</button>" + 
+                "</td><td>" + "<button class=\"btn btn-danger little\" onclick=\"remove(\'" + id + "\')\">刪除</button>" +
                 "</td></tr>");
 
-            if(category == "吃的") {
+            if (category == "吃的") {
                 eatCost += cost / 1;
                 console.log(eatCost);
-            }else if(category == "玩的") {
+            } else if (category == "玩的") {
                 playCost += cost / 1;
-            }else{
+            } else {
                 otherCost += cost / 1;
             }
         }
         totalCost = eatCost + playCost + otherCost;
 
-		$("#eatCost").text(eatCost)
-		$("#eatProportion").text(Math.round((eatCost/totalCost)*100) + "%")
-		$("#playCost").text(playCost)
-		$("#playProportion").text(Math.round((playCost/totalCost)*100) + "%")
-		$("#otherCost").text(otherCost)
-		$("#otherProportion").text(Math.round((otherCost/totalCost)*100) + "%")
+        $("#eatCost").text(eatCost)
+        $("#eatProportion").text(Math.round((eatCost / totalCost) * 100) + "%")
+        $("#playCost").text(playCost)
+        $("#playProportion").text(Math.round((playCost / totalCost) * 100) + "%")
+        $("#otherCost").text(otherCost)
+        $("#otherProportion").text(Math.round((otherCost / totalCost) * 100) + "%")
         $("#totalCost").text(totalCost)
+
+        var data = [
+            { label: "吃的", data: eatCost },
+            { label: "玩的", data: playCost },
+            { label: "其他", data: otherCost }
+        ];
+
+        var options = {
+            series: {
+                pie: { show: true }
+            },
+            legend: {
+                show: false
+            }
+        };
+        $("#flotcontainer").css('display','block'); 
+        $.plot($("#flotcontainer"), data, options);
     }
 }
 
@@ -140,6 +158,5 @@ function remove(id) {
         _id: id
     });
     accountingCollection.save();
-    // location.reload();
     Search();
 }
