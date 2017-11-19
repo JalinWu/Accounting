@@ -35,14 +35,14 @@ function Search() {
             var category = accountings[i].category;
             var item = accountings[i].item;
             var cost = accountings[i].cost;
-            var id = accountings[i]._id;
+            var id = accountings[i]._id; //ieieerjdk
 
             $("#accountingTable").append(
                 "<tr><td>" + date +
                 "</td><td>" + category +
                 "</td><td>" + item +
                 "</td><td>" + cost +
-                "</td><td>" + "<button class=\"btn btn-danger little\" onclick=\"remove(\'" + id + "\')\">刪除</button>" +
+                "</td><td>" + "<button class=\"btn btn-danger little\" onclick=\"remove('" + id + "')\"></button>" +
                 "</td></tr>");
 
             if (category == "吃的") {
@@ -64,22 +64,22 @@ function Search() {
         $("#otherProportion").text(Math.round((otherCost / totalCost) * 100) + "%")
         $("#totalCost").text(totalCost)
 
-        var data = [
-            { label: "吃的", data: eatCost },
-            { label: "玩的", data: playCost },
-            { label: "其他", data: otherCost }
-        ];
+        // var data = [
+        //     { label: "吃的", data: eatCost },
+        //     { label: "玩的", data: playCost },
+        //     { label: "其他", data: otherCost }
+        // ];
 
-        var options = {
-            series: {
-                pie: { show: true }
-            },
-            legend: {
-                show: false
-            }
-        };
-        $("#flotcontainer").css('display','block'); 
-        $.plot($("#flotcontainer"), data, options);
+        // var options = {
+        //     series: {
+        //         pie: { show: true }
+        //     },
+        //     legend: {
+        //         show: false
+        //     }
+        // };
+        // $("#flotcontainer").css('display','block'); 
+        // $.plot($("#flotcontainer"), data, options);
 
     } else {
         var fromTime = $("#fromTime").val();
@@ -133,30 +133,32 @@ function Search() {
         $("#otherProportion").text(Math.round((otherCost / totalCost) * 100) + "%")
         $("#totalCost").text(totalCost)
 
-        var data = [
-            { label: "吃的", data: eatCost },
-            { label: "玩的", data: playCost },
-            { label: "其他", data: otherCost }
-        ];
+        // var data = [
+        //     { label: "吃的", data: eatCost },
+        //     { label: "玩的", data: playCost },
+        //     { label: "其他", data: otherCost }
+        // ];
 
-        var options = {
-            series: {
-                pie: { show: true }
-            },
-            legend: {
-                show: false
-            }
-        };
-        $("#flotcontainer").css('display','block'); 
-        $.plot($("#flotcontainer"), data, options);
+        // var options = {
+        //     series: {
+        //         pie: { show: true }
+        //     },
+        //     legend: {
+        //         show: false
+        //     }
+        // };
+        // $("#flotcontainer").css('display','block'); 
+        // $.plot($("#flotcontainer"), data, options);
     }
 }
 
 function remove(id) {
-    console.log(id);
     accountingCollection.remove({
         _id: id
     });
+
     accountingCollection.save();
+
     Search();
+
 }
