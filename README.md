@@ -1,2 +1,4 @@
-# accouting
-這是我的第一支記帳APP
+# Accounting App
+
+This is an accounting app based on ForerunnerDB.
+Convert to APP by PhoneGap.
